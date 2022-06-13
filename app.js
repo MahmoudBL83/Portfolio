@@ -1,92 +1,50 @@
-/**
- *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
-*/
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-/**
- * Define Global Variables
- *
-*/
-//the navbar container
-let navList =document.querySelector('#navbar__list');
-//the sections of the page
-let sections=[... document.querySelectorAll('section')];
-/*
- * End Global Variables
- * Start Helper Functions
- *
-*/
-
-/*All functions implemented in event listening*/
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
-*/
-
-// build the navbar
-//for loop to make nav bar
-//start of the loop
-for(let i=1;i<=(sections.length);i++){
-	let x = document.createElement('li');
-	x.textContent=`Section ${i}`;
-	//append li elements to the ul list
-	navList.appendChild(x);
-	//add the style to the list elements
-	//give an id to each of the nav components
-	x.setAttribute('id','secLink'+i)
-	//giva an attribute to the lists elements
-	x.classList.add('menu__link')
+let rows1 = document.querySelector('#table2').querySelectorAll('tr');
+let rows=[]
+for(let l=1;l<rows1.length;l++){
+  rows.push(rows1[l])
 }
-//end of the loop
+function makeLines(r1,r2,r3,r4){
+let line1 = document.querySelector('#line1');
+let line2 = document.querySelector('#line2');
+let line3 = document.querySelector('#line3');
+line1.setAttribute('x1',rows[r1].querySelectorAll('td')[0].offsetLeft+0.5*(rows[r1].querySelectorAll('td')[0].clientWidth))
+line1.setAttribute('y1',rows[r1].querySelectorAll('td')[0].offsetTop+0.5*(rows[r1].querySelectorAll('td')[0].clientHeight))
+line1.setAttribute('x2',rows[r2].querySelectorAll('td')[1].offsetLeft+0.5*(rows[r2].querySelectorAll('td')[1].clientWidth))
+line1.setAttribute('y2',rows[r2].querySelectorAll('td')[1].offsetTop+0.5*(rows[r2].querySelectorAll('td')[1].clientHeight))
+line2.setAttribute('x1',rows[r2].querySelectorAll('td')[1].offsetLeft+0.5*(rows[r2].querySelectorAll('td')[1].clientWidth))
+line2.setAttribute('y1',rows[r2].querySelectorAll('td')[1].offsetTop+0.5*(rows[r2].querySelectorAll('td')[1].clientHeight))
+line2.setAttribute('x2',rows[r3].querySelectorAll('td')[2].offsetLeft+0.5*(rows[r3].querySelectorAll('td')[2].clientWidth))
+line2.setAttribute('y2',rows[r3].querySelectorAll('td')[2].offsetTop+0.5*(rows[r3].querySelectorAll('td')[2].clientHeight))
+line3.setAttribute('x1',rows[r3].querySelectorAll('td')[2].offsetLeft+0.5*(rows[r3].querySelectorAll('td')[2].clientWidth))
+line3.setAttribute('y1',rows[r3].querySelectorAll('td')[2].offsetTop+0.5*(rows[r3].querySelectorAll('td')[2].clientHeight))
+line3.setAttribute('x2',rows[r4].querySelectorAll('td')[3].offsetLeft+0.5*(rows[r4].querySelectorAll('td')[3].clientWidth))
+line3.setAttribute('y2',rows[r4].querySelectorAll('td')[3].offsetTop+0.5*(rows[r4].querySelectorAll('td')[3].clientHeight))
+rows[r1].querySelectorAll('td')[0].innerHTML='<span style="display:inline-block;border-radius:50%;border:8px solid black"></span>'
+rows[r2].querySelectorAll('td')[1].innerHTML='<span style="display:inline-block;border-radius:50%;border:8px solid black"></span>'
+rows[r3].querySelectorAll('td')[2].innerHTML='<span style="display:inline-block;border-radius:50%;border:8px solid black"></span>'
+rows[r4].querySelectorAll('td')[3].innerHTML='<span style="display:inline-block;border-radius:50%;border:8px solid black"></span>'
 
-//store the li elements in a variable.
-let lists=[...document.querySelectorAll('li')];
+}
+  rows.forEach((element,index) => {
+    if((parseInt(element.querySelectorAll('td')[0].innerHTML))==18){
+      r11=index;
+    }
+    if((parseInt(element.querySelectorAll('td')[1].innerHTML))==10){
+      r22=index;
+    }
+    if((parseInt(element.querySelectorAll('td')[2].innerHTML))==20){
+      r33=index;
+    }
+    if((parseInt(element.querySelectorAll('td')[3].innerHTML))==-5){
+      r44=index;
+    }
+  });
+  makeLines(r11,r22,r33,r44);
 
-// Add class 'your-active-class' to section when near top of viewport
-//And refresh the navbar li classes
-window.addEventListener('scroll', function activeClass() {
-	//loop over the 4 sections.
-	sections.forEach(function(x, i) {
-		let top = x.getBoundingClientRect().top;
-		if (top >= -20 && top <= 500) {
-			//add the active class to section
-			x.classList.add('your-active-class');
-			//refresh li classes
-			lists[i].classList.add('activeNav');
-			lists[i].classList.remove('menu__link');
-		} else {
-			//remove active class from the section
-			x.classList.remove('your-active-class');
-			//refresh li classes
-			lists[i].classList.remove('activeNav');
-			lists[i].classList.add('menu__link');
-		}
-	});
-})
-
-// Scroll to anchor ID using scrollTO event
-lists.forEach(function(element, index) {
-	element.addEventListener('click', function() {
-		sections[index].scrollIntoView({
-			behavior: "smooth"
-		});
-	})
-});
-// Build menu
-/*built in css with :hover and @media;*/
+  document.querySelector('#show').addEventListener('click',()=>{
+    document.querySelector('#line3').scrollIntoView({behavior: "smooth"});
+  })
+  var bar1 = new ldBar("#container");
+  /* ldBar stored in the element */
+  var bar1 = document.getElementById('myItem1').ldBar;
+  bar1.set(60);
